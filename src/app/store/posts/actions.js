@@ -2,16 +2,16 @@ import constants from "./CONSTANTS";
 
 const actions = {
   getPosts: () => ({
-    type: constants.POSTS_LOADING
+    type: constants.POSTS_LOADING,
   }),
   setPosts: (data) => ({
     type: constants.POSTS_SUCCESS,
-    payload: data
+    payload: data,
   }),
   errPosts: (err) => ({
     type: constants.POSTS_ERROR,
-    payload: err
-  })
+    payload: err,
+  }),
 };
 
 export default actions;

@@ -6,8 +6,8 @@ import axios from "../../helpers/axiosInstance";
 export function* getPosts() {
   yield takeEvery(constants.POSTS_LOADING, function* () {
     try {
-      const response = yield axios().get("/posts");
-      yield put(actions.setPosts(response.data));
+      const { data } = yield axios.get("/posts");
+      yield put(actions.setPosts(data));
     } catch (e) {
       yield put(actions.errPosts(e));
     }

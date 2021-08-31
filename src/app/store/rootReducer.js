@@ -3,7 +3,7 @@ import posts from "../store/posts/reducer";
 
 const rootReducer = () => (state, action) => {
   const combinedReducer = combineReducers({
-    posts
+    posts,
   });
 
   return combinedReducer(state, action);
