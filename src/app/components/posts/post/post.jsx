@@ -1,20 +1,18 @@
-import { useDispatch } from "react-redux";
-
 const PostComponent = (props) => {
-  const { id, title, text, username, user_image } = props;
+  const { id, title, text, username, user_image, selectPostId } = props;
 
   return (
-    <div className="post card my-3">
-      <div className="d-flex align-items-center p-2">
-        <div>
-          <img className="post__user-image" src={user_image} alt={username} />
-        </div>
-        <div>
-          <h6 className="post__title">{title}</h6>
-          <p className="post__body">{text}</p>
-          <span className="post__username">{username}</span>
-        </div>
+    <div className="post card " onClick={() => selectPostId(id)}>
+      <div className="d-flex align-items-center m-auto">
+        <img
+          className="post__user-image rounded-circle my-3"
+          src={user_image}
+          alt={username}
+        />
+        <h6 className="post__title text-center w-100 ps-3">{title}</h6>
       </div>
+      <p className="post__body text-center">{text}</p>
+      <span className="post__username ms-auto pb-2 pe-2">{username}</span>
     </div>
   );
 };

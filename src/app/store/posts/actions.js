@@ -2,14 +2,29 @@ import constants from "./CONSTANTS";
 
 const actions = {
   getPosts: () => ({
-    type: constants.POSTS_LOADING,
+    type: constants.GET_POSTS,
   }),
   setPosts: (data) => ({
-    type: constants.POSTS_SUCCESS,
+    type: constants.SET_POSTS,
     payload: data,
   }),
   errPosts: (err) => ({
-    type: constants.POSTS_ERROR,
+    type: constants.ERROR_POSTS,
+    payload: err,
+  }),
+  getPost: (id) => ({
+    type: constants.GET_POST,
+    id,
+  }),
+  setPost: (data) => ({
+    type: constants.SET_POST,
+    payload: data,
+  }),
+  clearPost: () => ({
+    type: constants.CLEAR_POST,
+  }),
+  errPost: (err) => ({
+    type: constants.ERROR_POST,
     payload: err,
   }),
 };
