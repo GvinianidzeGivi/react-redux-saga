@@ -20,6 +20,10 @@ const actions = {
     type: constants.SET_POST,
     payload: data,
   }),
+  updatePost: (data) => ({
+    type: constants.UPDATE_POST,
+    payload: data,
+  }),
   clearPost: () => ({
     type: constants.CLEAR_POST,
   }),

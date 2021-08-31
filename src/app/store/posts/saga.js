@@ -9,7 +9,7 @@ export function* getPosts() {
       const { data } = yield axios.get("/posts");
       yield put(actions.setPosts(data));
     } catch (e) {
-      yield put(actions.errPosts(e));
+      yield put(actions.errPosts(e.response.data));
     }
   });
 }
@@ -25,6 +25,18 @@ export function* getPost() {
   });
 }
 
+export function* updatePost() {
+  yield takeEvery(constants.UPDATE_POST, function* ({ payload }) {
+    try {
+      const { id, comments } = payload;
+      const { data } = yield axios.put(`/posts/${id}`, { comments });
+      yield put(actions.setPost(data));
+    } catch (e) {
+      yield put(actions.errPost(e));
+    }
+  });
+}
+
 export default function* rootSaga() {
-  yield all([fork(getPosts), fork(getPost)]);
+  yield all([fork(getPosts), fork(getPost), fork(updatePost)]);
 }

@@ -16,12 +16,14 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         loading: true,
+        error: false,
       };
     case constants.SET_POSTS:
       return {
         ...state,
         posts: action.payload,
         loading: false,
+        error: false,
       };
 
     case constants.ERROR_POSTS:
@@ -43,6 +45,13 @@ const reducer = (state = initialState, action) => {
         ...state,
         loading: false,
         selectedUser: action.payload,
+      };
+
+    case constants.UPDATE_POST:
+      return {
+        ...state,
+        loading: false,
+        payload: action.payload,
       };
 
     case constants.CLEAR_POST:

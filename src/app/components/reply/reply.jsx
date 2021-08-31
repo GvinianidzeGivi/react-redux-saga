@@ -1,13 +1,25 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import actions from "../../store/posts/actions";
 import CommentComponent from "./comment/comment";
+import { v4 as uuidv4 } from "uuid";
 
 const ReplyComponent = () => {
+  const dispatch = useDispatch();
   const [comment, setComment] = useState("");
   const { selectedUser } = useSelector(({ posts }) => posts);
 
   const onSubmit = (e) => {
     e.preventDefault();
+    dispatch(
+      actions.updatePost({
+        comments: [
+          ...selectedUser.comments,
+          { id: uuidv4(), user: "Guest" + uuidv4(), text: comment },
+        ],
+        id: selectedUser.id,
+      })
+    );
     setComment("");
   };
 
